@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: web-deploy  
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+        env: production
+
+  template:
+    metadata:
+     name: web-deploy
+     labels:
+       env: production
+       dc: "2"
+       region: IN
+    spec:
+     containers:
+      - name: myweb-con
+        image: d1031/myweb:v1	
+      
